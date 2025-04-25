@@ -6,7 +6,7 @@ def init_firebase():
         cred = credentials.Certificate(r"/home/cathe/Desktop/smartshoppingcart/firebase-key.json")
 
         firebase_admin.initialize_app(cred, {
-            'databaseURL': 'https://smart-shopping-cart-652f2-default-rtdb.asia-southeast1.firebasedatabase.app'
+            'databaseURL': '   '
         })
 
         print("Firebase initialized successfully!")
@@ -23,7 +23,6 @@ def add_product(product_id, name, quantity, price):
     })
     print(f"Added {name} to Firebase.")
 
-# Run only if this script is executed directly
 if __name__ == "__main__":
     add_product("prod_001", "Milk", 10, 2.5)
     add_product("prod_002", "Maggi", 3, 5)
