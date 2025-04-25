@@ -110,14 +110,13 @@ class ObjectTracker:
                     move_motor(1, 0, 1, 0)  # Move Forward
             else:
                 print("No person detected. Stopping motors.")
-                stop_motor()  # Stop if no person detected
+                stop_motor()
 
-            # Optional: Show camera feed (Comment out for headless usage)
             cv2.imshow("Camera View", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
-            time.sleep(0.1)  # Reduced sleep to smoothen operation, but it's now more efficient
+            time.sleep(0.1)  # Reduced sleep to smoothen operation
             
         cv2.destroyAllWindows()
 
