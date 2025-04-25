@@ -1,0 +1,18 @@
+import mariadb
+
+def connect_mariadb():
+    try:
+        conn = mariadb.connect(
+            host="localhost",
+            user="root",
+            password="ccs123",
+            database="smart_shopping_cart"
+        )
+        print("MariaDB Connection Successful!")
+        return conn
+    except mariadb.Error as e:
+        print(f"Error connecting to MariaDB: {e}")
+        return None
+
+if __name__ == "__main__":
+    connect_mariadb()
