@@ -5,7 +5,7 @@ def connect_mariadb():
         conn = mariadb.connect(
             host="localhost",
             user="root",
-            password="ccs123",
+            password="   ",
             database="smart_shopping_cart"
         )
         print("MariaDB Connection Successful!")
