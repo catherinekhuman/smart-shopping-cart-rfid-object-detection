@@ -48,7 +48,7 @@
             margin-top: 20px;
             background: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            display: none; /* Hide initially */
+            display: none;
         }
 
         th, td {
@@ -95,7 +95,7 @@
 <body>
 
     <header>
-        Smart Shopping Cart 🛒
+        Smart Shopping Cart
     </header>
 
     <main>
@@ -148,7 +148,7 @@
                         }
                     });
 
-                    table.style.display = 'table'; // Show table after data is fetched
+                    table.style.display = 'table';
                     document.getElementById('error').innerText = '';
                 } else {
                     document.getElementById('error').innerText = 'Invalid data format received.';
