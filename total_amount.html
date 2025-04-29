@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Total Amount - Smart Cart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 30px;
+        }
+
+        .qr-section {
+            margin-top: 20px;
+        }
+
+        .qr-section h3 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .qr-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            border: 2px solid #2c3e50;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a button {
+            background-color: #2980b9;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        a button:hover {
+            background-color: #1c5980;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #ecf0f1;
+            margin-top: 50px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Smart Shopping Cart 🧾
+    </header>
+
+    <main>
+        <h2>Total Amount</h2>
+        <div class="amount">₹ {{ total }}</div>
+
+        <div class="qr-section">
+            <h3>Scan to Pay</h3>
+            <!-- ✅ Your own static QR code -->
+            <img src="{{ url_for('static', filename='qrcodes/qr_output.png') }}" alt="QR Code" class="qr-img">
+        </div>
+
+        <a href="/cart">
+            <button>← Back to Cart</button>
+        </a>
+    </main>
+
+    <footer>
+        &copy; 2025 Smart Cart Inc. All rights reserved.
+    </footer>
+
+</body>
+</html>
