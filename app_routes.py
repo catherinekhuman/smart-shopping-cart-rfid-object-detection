@@ -30,14 +30,13 @@ def total_amount():
 
         for item in data:
             try:
-                quantity = int(item.get('quantity', 0))  # using 'quantity'
+                quantity = int(item.get('quantity', 0))
                 price = float(item.get('price', 0))
                 total += price * quantity
                 all_products.append(item)
             except:
                 continue
 
-        # Use your own QR code stored in static
         return render_template('total_amount.html', total=total, items=all_products)
 
     except Exception as e:
