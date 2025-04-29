@@ -3,7 +3,7 @@ from flask_cors import CORS
 from app_routes import app_routes
 
 app = Flask(__name__)
-app.secret_key = '1b2a3c4d5e6f7a8b9c0d1e2f3a4b5c6d'
+app.secret_key = ' '
 CORS(app)
 
 # Register Blueprints
