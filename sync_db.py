@@ -1,24 +1,21 @@
 import firebase_admin
 from firebase_admin import credentials, db
-from db_config import connect_mariadb  # Import the MariaDB connection function
-from firebase_config import init_firebase  # Import Firebase initialization
+from db_config import connect_mariadb
+from firebase_config import init_firebase
 
-# Initialize Firebase before using db.reference()
 init_firebase()
 
-# Now, we can safely use db.reference()
 firebase_ref = db.reference("inventory_log")
 
 from firebase_admin import db
 
-firebase_ref = db.reference("inventory_log")  # Adjust if your Firebase path is different
+firebase_ref = db.reference("inventory_log")  
 data = firebase_ref.get()
 print("Firebase Data:", data)
 
 
-# Function to sync Firebase data to MariaDB
 def sync_firebase_to_mariadb():
-    conn = connect_mariadb()  # Connect to MariaDB
+    conn = connect_mariadb() 
     cursor = conn.cursor()
 
     inventory_data = firebase_ref.get()
@@ -28,13 +25,13 @@ def sync_firebase_to_mariadb():
             change_type = data.get("change_type", "Added")  # Default "Added"
             quantity_changed = data.get("quantity_changed", 1)  # Default 1
 
-            # Check if product exists in products table
+            # Check if product exists in the products table
             cursor.execute("SELECT COUNT(*) FROM products WHERE product_id = %s", (product_id,))
             (product_exists,) = cursor.fetchone()
 
             if product_exists == 0:
                 print(f"Skipping {product_id}: Product does not exist in MariaDB.")
-                continue  # Skip this product
+                continue
 
             # Insert into inventory_log
             sql = """
@@ -50,7 +47,5 @@ def sync_firebase_to_mariadb():
     conn.close()
 
 
-
-# Run script
 if __name__ == "__main__":
     sync_firebase_to_mariadb()
